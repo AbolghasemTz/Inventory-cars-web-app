@@ -8,8 +8,10 @@ const MODAL_STYLE = {
   left: "50%",
   transform: "translate(-50%,-50%)",
   backgroundColor: "#fff",
-  padding: "25px",
+  padding: "30px",
   zIndex: 1000,
+  borderRadius:'5px'
+
 };
 
 const OVERLAY_STYLE = {
@@ -28,7 +30,7 @@ export default function Modal({ children, open, onClose }) {
     <>
       <div style={OVERLAY_STYLE} />
       <div style={MODAL_STYLE} className="mt-4">
-        <button onClick={() => onClose(false)} className="absolute top-0 right-0 p-1"><AiOutlineClose size={25}/></button>
+        <button onClick={() => onClose(false)} className="absolute top-0 right-0 p-1"><AiOutlineClose size={20}/></button>
         {children}
       </div>
     </>,

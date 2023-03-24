@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 
 function Cars({ cars, setCars, openModal, setOpenModal }) {
+
   const [carsFormData, setCarsFormData] = useState({
     image: "",
     brand: "",
@@ -26,14 +27,13 @@ function Cars({ cars, setCars, openModal, setOpenModal }) {
       },
     ]);
     setCarsFormData({
-      image: "",
       brand: "",
       model: "",
       make: "",
       color: "",
       status: "",
     });
-    setOpenModal(false)
+    setOpenModal(false);
   };
 
   return (
@@ -52,7 +52,6 @@ function Cars({ cars, setCars, openModal, setOpenModal }) {
                 type="text"
                 name="brand"
                 value={carsFormData.brand}
-                id="car--brand"
                 onChange={changeHandler}
                 className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
               />
@@ -68,7 +67,6 @@ function Cars({ cars, setCars, openModal, setOpenModal }) {
                 type="text"
                 name="model"
                 value={carsFormData.model}
-                id="car--model"
                 onChange={changeHandler}
                 className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
               />
@@ -84,7 +82,6 @@ function Cars({ cars, setCars, openModal, setOpenModal }) {
                 type="number"
                 name="make"
                 value={carsFormData.make}
-                id="car--make"
                 onChange={changeHandler}
                 className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
               />
@@ -100,7 +97,6 @@ function Cars({ cars, setCars, openModal, setOpenModal }) {
                 type="text"
                 name="color"
                 value={carsFormData.color}
-                id="car--color"
                 onChange={changeHandler}
                 className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
               />
@@ -116,14 +112,12 @@ function Cars({ cars, setCars, openModal, setOpenModal }) {
                 type="text"
                 name="status"
                 value={carsFormData.status}
-                id="car--status"
                 onChange={changeHandler}
                 className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
               />
             </div>
             <div className="flex items-center justify-between gap-x-2">
               <button
-                id="add-new-products"
                 className="flex-1 bg-slate-500 text-slate-200 rounded-xl py-1 mt-1"
                 onClick={addNewCar}
               >
