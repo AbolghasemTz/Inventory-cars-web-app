@@ -2,20 +2,22 @@ import React, { useState } from "react";
 import Modal from "./Modal";
 
 function Cars({ cars, setCars, openModal, setOpenModal }) {
-
   const [carsFormData, setCarsFormData] = useState({
-    image: "",
     brand: "",
     model: "",
     make: "",
     color: "",
     status: "",
+    price: "",
+    description: "",
   });
+  console.log(carsFormData);
 
   const changeHandler = ({ target }) => {
     const { name, value } = target;
     setCarsFormData({ ...carsFormData, [name]: value });
   };
+
   const addNewCar = (e) => {
     e.preventDefault();
     setCars([
@@ -40,81 +42,98 @@ function Cars({ cars, setCars, openModal, setOpenModal }) {
     <>
       <Modal open={openModal} onClose={setOpenModal}>
         <div>
-          <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-1 w-[400px]">
-            <div>
-              <label
-                htmlFor="car-name"
-                className="block mb-1 text-slate-400 text-sm"
-              >
-                برند
-              </label>
+          <form className="bg-slate-700 p-4 rounded-xl flex flex-col gap-y-1 w-[500px] ">
+          <div>
+              <div className="flex justify-between items-center mb-2">
+           
               <input
                 type="text"
                 name="brand"
                 value={carsFormData.brand}
                 onChange={changeHandler}
-                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+                placeholder="برند"
+                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-52"
               />
-            </div>
-            <div>
-              <label
-                htmlFor="car-name"
-                className="block mb-1 text-slate-400 text-sm"
-              >
-                مدل
-              </label>
+
+             
               <input
                 type="text"
                 name="model"
                 value={carsFormData.model}
                 onChange={changeHandler}
-                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+                placeholder="مدل"
+
+                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-52"
               />
             </div>
-            <div>
-              <label
-                htmlFor="car-name"
-                className="block mb-1 text-slate-400 text-sm"
-              >
-                سال ساخت
-              </label>
+
+
+          </div>
+            <div className="flex justify-between items-center mb-2">
+          
               <input
                 type="number"
                 name="make"
                 value={carsFormData.make}
                 onChange={changeHandler}
-                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+                placeholder="سال ساخت"
+
+                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-52"
               />
-            </div>
-            <div>
-              <label
-                htmlFor="car-name"
-                className="block mb-1 text-slate-400 text-sm"
-              >
-                رنگ
-              </label>
+            
               <input
                 type="text"
                 name="color"
                 value={carsFormData.color}
                 onChange={changeHandler}
-                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+                placeholder="رنگ"
+
+                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-52"
               />
             </div>
-            <div>
-              <label
-                htmlFor="car-name"
-                className="block mb-1 text-slate-400 text-sm"
-              >
-                وضعیت
-              </label>
+            
+            <div className="flex justify-between items-center mb-2">
+            
+           
+            
               <input
                 type="text"
                 name="status"
                 value={carsFormData.status}
                 onChange={changeHandler}
-                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+                placeholder="وضعیت"
+
+                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-52"
               />
+            
+              <input
+                type="text"
+                name="price"
+                placeholder="قیمت"
+
+                value={carsFormData.price}
+                onChange={changeHandler}
+                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-52"
+              />
+            </div>
+
+          
+            <div>
+              <label
+                htmlFor="car-name"
+                className="block mb-1 text-slate-400 text-sm"
+              >
+                توضیحات
+              </label>
+              <textarea
+                type="text"
+                name="description"
+                value={carsFormData.description}
+                onChange={changeHandler}
+                placeholder="توضیحات"
+
+                className="bg-transparent rounded-xl border border-slate-500 text-slate-400 w-full"
+              ></textarea>
             </div>
             <div className="flex items-center justify-between gap-x-2">
               <button

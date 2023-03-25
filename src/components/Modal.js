@@ -10,11 +10,13 @@ const MODAL_STYLE = {
   backgroundColor: "#fff",
   padding: "30px",
   zIndex: 1000,
-  borderRadius:'5px'
-
+  borderRadius:'5px',
+ 
+  
 };
 
 const OVERLAY_STYLE = {
+
   position: "fixed",
   top: 0,
   right: 0,

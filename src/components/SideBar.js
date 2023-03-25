@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
 import {HiMenuAlt2} from 'react-icons/hi'
 import {MdOutlineDashboard,MdSell} from 'react-icons/md'
-import {AiOutlineUser} from 'react-icons/ai'
 import {FaCarSide} from 'react-icons/fa'
 import {GiCarKey} from 'react-icons/gi'
 import { Link } from 'react-router-dom';
 function SideBar(props) {
     const menus = [
-        {name:"داشبورد",link:"/",icon:MdOutlineDashboard},
-        {name:"کاربر ها",link:"/",icon:AiOutlineUser},
-        {name:"ماشین ها",link:"/cars",icon:FaCarSide},
-        {name:"ماشین های فعال",link:"/",icon:GiCarKey},
-        {name:"ماشین فروخته شده",link:"/",icon:MdSell},
+        {name:"داشبورد",link:"#",icon:MdOutlineDashboard},
+        {name:"ماشین ها",link:"/",icon:FaCarSide},
+        {name:"ماشین های موجود",link:"/active",icon:GiCarKey},
+        {name:"ماشین فروخته شده",link:"/sold",icon:MdSell},
     ]
 
     const [open,setOpen] = useState(true);

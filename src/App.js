@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import CarsSold from "./components/CarsSold";
+import ActiveCar from "./components/ActiveCar";
 import CarList from "./components/CarList";
 import Cars from "./components/Cars";
+import InfoCar from "./components/InfoCar";
 import Navbar from "./components/Navbar";
 import SideBar from "./components/SideBar";
 
@@ -19,7 +22,7 @@ function App() {
     result = sortData(result);
     result = filterSearchBrand(result);
     setFilteredCars(result);
-  }, [cars, sortedValue,search]);
+  }, [cars, sortedValue, search]);
 
   const sortHandler = (e) => {
     setSortedValue(e.target.value);
@@ -36,14 +39,24 @@ function App() {
     });
   };
 
-  const searchHandler = ({target}) => {
+  const searchHandler = ({ target }) => {
     setSearch(target.value.toLowerCase().trim());
-
   };
 
   const filterSearchBrand = (array) => {
     return array.filter((p) => p.brand.toLowerCase().includes(search));
   };
+
+  useEffect(() => {
+    const saveCars = JSON.parse(localStorage.getItem("cars")) || [];
+    setCars(saveCars);
+  }, []);
+
+  useEffect(() => {
+    if (cars.length) {
+      localStorage.setItem("cars", JSON.stringify(cars));
+    }
+  }, [cars]);
   return (
     <div>
       <section className="flex justify- gap-6">
@@ -59,9 +72,38 @@ function App() {
           />
           <Routes>
             <Route
-              path="/cars"
-              element={<CarList cars={filteredCars} setCars={setCars} />}
+              path="/"
+              element={
+                <CarList
+                  cars={filteredCars}
+                  setCars={setCars}
+                  setOpenModal={setOpenModal}
+                />
+              }
             />
+            <Route
+              path="/active"
+              element={
+                <ActiveCar
+                  cars={filteredCars}
+                  setCars={setCars}
+                  setOpenModal={setOpenModal}
+                />
+              }
+            />
+            <Route
+              path="/sold"
+              element={
+                <CarsSold
+                  cars={filteredCars}
+                  setCars={setCars}
+                  setOpenModal={setOpenModal}
+                />
+              }
+            />
+            <Route path="/info/:id" element={<InfoCar cars={filteredCars} />} />
+
+          
           </Routes>
           <Cars
             openModal={openModal}
@@ -69,6 +111,7 @@ function App() {
             cars={cars}
             setCars={setCars}
           />
+         
         </div>
       </section>
     </div>
